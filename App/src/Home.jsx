@@ -1,5 +1,12 @@
+import React from 'react';
+
 const Home = () => {
-    return <h1>Home</h1>;
-  };
-  
-  export default Home;
+  const user = JSON.parse(localStorage.getItem('user'));
+  return (
+    <div>
+      <h1>Welcome, {user.username}!</h1>
+    </div>
+  );
+};
+
+export default Home;
