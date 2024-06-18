@@ -11,16 +11,16 @@ import './App.css'
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path='home' element={<Home />} />
-          <Route path="posts" element={<Posts />}/>
-          <Route path="albums" element={<Albums />}/>
-          <Route path="todos" element={<Todos />}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path='home' element={<Home />} />
+            <Route path="posts" element={<Posts />} />
+            <Route path="albums" element={<Albums />} />
+            <Route path="todos" element={<Todos />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
