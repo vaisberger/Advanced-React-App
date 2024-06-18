@@ -52,7 +52,10 @@ body {
   align-items: center;
   height: 100vh;
   background: linear-gradient(to right, #6a11cb, #2575fc);
+<<<<<<< HEAD
   color: #333;
+=======
+>>>>>>> a9440e82e3780bea4c6b8781f815bf5e2df83e13
 }
 
 form {
