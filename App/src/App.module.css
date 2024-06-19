@@ -3,32 +3,37 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
   }
-
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 40px;
+  position: fixed; 
+  top: 5%;
+  left: 20%;
 }
+
+.navLnk{
+  list-style-type: none;
+  display: flex; /* Use flexbox for horizontal layout */
+  margin: 0;
+  padding: 0;
+}
+
+.liLnk{
+  margin-right: 20px; /* Space out the links */
+}
+.lnk{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
@@ -55,7 +60,7 @@ body {
   color: #333;
 }
 
-form {
+.form {
   background: #fff;
   padding: 40px;
   border-radius: 10px;
@@ -101,7 +106,34 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background: #2575fc;
 }
-
+ 
+.btn{
+  background: #6a11cb;
+  color: #fff;
+  font-size: 25px;
+  padding: 5px 20px;
+  margin-top: 25px;
+  margin-right: 20px;
+  }
+.logout{
+width: 20px;
+}
+.info{
+  width: 24px;
+}
+.userInfo{
+  background-color: lightblue;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 300px;
+  max-width: 90%;
+  margin: 50px auto;
+  position:relative;
+  z-index:10;
+  font-size: 20px;
+  visibility: hidden;
+}
 p {
   color: red;
   font-weight: bold;

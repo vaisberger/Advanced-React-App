@@ -1,5 +1,8 @@
+import React from 'react';
+import './App.module.css';
+import Layout from './Layout';
 const Posts = () => {
-    return <h1>Posts</h1>;
+    return (<Layout/>)
   };
   
   export default Posts;

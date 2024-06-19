@@ -1,5 +1,9 @@
+import React from 'react';
+
+import './App.module.css';
+import Layout from './Layout';
 const Albums = () => {
-    return <h1>Albums</h1>;
+   return (<Layout/>)
   };
   
   export default Albums;

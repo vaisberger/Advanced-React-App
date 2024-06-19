@@ -5,7 +5,7 @@ import Posts from './Posts';
 import Todos from './Todos';
 import Albums from './Albums';
 import Login from './Login';
-import './App.css';
+import './App.module.css';
 
 function App() {
   return (
