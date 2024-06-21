@@ -1,9 +1,15 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { useState } from 'react';
-import classes from './App.module.css'
+import classes from './App.module.css';
+import { useNavigate } from 'react-router-dom';
 const Layout = () => {
   const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('user')));
-
+  const navigate = useNavigate();
+  const logout=()=>{
+    navigate('/login');
+    localStorage.removeItem("user");
+  
+  }
   return (
     <>
       <nav className={classes.navbar}>
@@ -50,9 +56,7 @@ const Layout = () => {
   )
 };
 
-const logout=()=>{
 
-}
 const info=()=>{
   document.getElementById('information').style.visibility = "visible";
 }
