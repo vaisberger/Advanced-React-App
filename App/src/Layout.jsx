@@ -1,6 +1,9 @@
 import { Outlet, Link } from "react-router-dom";
+import React, { useState } from 'react';
 import classes from './App.module.css'
 const Layout = () => {
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('user')));
+
   return (
     <>
       <nav className={classes.navbar}>
@@ -25,6 +28,22 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
+      <div className={classes.userInfo} id="information">
+      <span className={classes.exit} onClick={exitinfo}></span>
+        <h1>My Info</h1>
+        <div className={classes.infoDisplay}>
+            <p><strong>ID:</strong> {userData.id}</p>
+            <p><strong>Name:</strong> {userData.name}</p>
+            <p><strong>Username:</strong> {userData.username}</p>
+            <p><strong>Email:</strong> {userData.email}</p>
+            <p><strong>Phone:</strong> {userData.phone}</p>
+            <p><strong>Website:</strong> {userData.website}</p>
+            <p><strong>Address:</strong></p>
+            <p>{userData.address.street}, {userData.address.suite}, {userData.address.city}, {userData.address.zipcode}</p>
+            <p><strong>Company:</strong></p>
+            <p>{userData.company.name} - {userData.company.catchPhrase}</p>
+          </div>
+      </div>
       <Outlet />
  
     </>
@@ -35,6 +54,9 @@ const logout=()=>{
 
 }
 const info=()=>{
-    
+  document.getElementById('information').style.visibility = "visible";
+}
+const exitinfo=()=>{
+  document.getElementById('information').style.visibility = "hidden";
 }
 export default Layout;
