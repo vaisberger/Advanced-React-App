@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './App.css';
+import { useNavigate } from 'react-router-dom';
+import classes from './App.module.css';
 
 function Login() {
   return <Form />;
@@ -42,7 +44,7 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
+    <form onSubmit={handleSubmit} className={classes.form}>
       <label>
         Username:
         <input

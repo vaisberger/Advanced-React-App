@@ -1,11 +1,13 @@
 import React from 'react';
-
+import { Routes, Route } from 'react-router-dom';
+import Layout from './Layout'
+import Posts from './Posts';
+import Todos from './Todos';
+import Albums from './Albums';
+import './App.module.css';
 const Home = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
   return (
-    <div>
-      <h1>Welcome, {user.username}!</h1>
-    </div>
+   <Layout/>
   );
 };
 
