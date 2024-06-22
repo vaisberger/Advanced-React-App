@@ -106,3 +106,58 @@ p {
   color: red;
   font-weight: bold;
 }
+
+.login-form label {
+  display: block;
+  font-weight: bold;
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.login-form2 {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.login-form input[type="submit"] {
+  grid-column: span 2;
+  background: #6a11cb;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form input[type="submit"]:hover {
+  background: #2575fc;
+}
+
+.login-form p {
+  color: red;
+  font-weight: bold;
+  grid-column: span 2;
+}
