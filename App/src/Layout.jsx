@@ -58,9 +58,9 @@ const Layout = () => {
 
 
 const info=()=>{
-  document.getElementById('information').style.visibility = "visible";
+  document.getElementById('information').style.display = "block";
 }
 const exitinfo=()=>{
-  document.getElementById('information').style.visibility = "hidden";
+  document.getElementById('information').style.display = "none";
 }
 export default Layout;

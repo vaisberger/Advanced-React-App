@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 ;
   padding: 2rem;
   text-align: center;
 }
@@ -8,11 +8,12 @@
 .navbar {
   width: 100%;
   margin: auto;
+  margin-bottom: 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 40px;
-  position: fixed;
+  position: absolute;
   top: 5%;
   left: 20%;
 }
@@ -20,14 +21,12 @@
 .navLnk {
   list-style-type: none;
   display: flex;
-  /* Use flexbox for horizontal layout */
   margin: 0;
   padding: 0;
 }
 
 .liLnk {
   margin-right: 20px;
-  /* Space out the links */
 }
 
 .lnk {
@@ -37,7 +36,6 @@
   padding: 16px;
   text-decoration: none;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
@@ -54,14 +52,14 @@
 }
 
 body {
-  margin: 0;
   font-family: 'Arial', sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
   background: linear-gradient(to right, #6b11cb53, #2574fc61);
   color: #333;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .form {
@@ -101,10 +99,6 @@ input[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
-  -webkit-transition: background 0.3s ease;
-  -moz-transition: background 0.3s ease;
-  -ms-transition: background 0.3s ease;
-  -o-transition: background 0.3s ease;
 }
 
 input[type="submit"]:hover {
@@ -141,7 +135,7 @@ input[type="submit"]:hover {
   font-size: 10px;
   color: #6a11cb;
   text-align: center;
-  visibility: hidden;
+  display: none;
 }
 
 .infoDisplay {
@@ -157,4 +151,35 @@ input[type="submit"]:hover {
   content: '❌';
   margin-left: 270px;
   font-size: 16px;
+}
+
+.container {
+  width: 700px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 200px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.post {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(8, 8, 8, 0.2);
+}
+
+.post h2 {
+  margin-top: 0;
+  color: #6a11cb;
+}
+.post h1{
+  color: black;
+  font-size: 20px;
+}
+.post p {
+  margin: 0;
 }
