@@ -42,3 +42,28 @@ body {
 .login-form p {
   text-align: center;
 }
+
+.login-form2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two equal columns */
+  gap: 20px;
+  /* Space between columns */
+  max-width: 600px;
+  /* Max width of the form */
+  margin: auto;
+  /* Center the form horizontally */
+}
+
+.login-form2 div {
+  display: flex;
+  flex-direction: column;
+  /* Stack label and input vertically */
+  margin-bottom: 10px;
+  /* Space between each field */
+}
+
+input[type="submit"] {
+  grid-column: span 2;
+  /* Extend the submit button across both columns */
+}

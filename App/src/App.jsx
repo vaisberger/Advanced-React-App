@@ -24,7 +24,7 @@ function App() {
           <Route path="/albums" element={<Albums />} />
           <Route path="/todos" element={<Todos />} />
         </Route>
-        {/* ניתוב לברירת מחדל במקרה של נתיב לא מוכר */}
+        { }
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
