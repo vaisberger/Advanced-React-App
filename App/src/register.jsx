@@ -7,7 +7,7 @@ function Register() {
 }
 
 async function checkUsernameAvailability(username) {
-    const response = await fetch('http://localhost:3001/user');
+    const response = await fetch('http://localhost:3000/user');
     if (!response.ok) {
         throw new Error('Failed to check username availability');
     }
@@ -16,7 +16,7 @@ async function checkUsernameAvailability(username) {
 }
 
 async function registerUser(user) {
-    const response = await fetch('http://localhost:3001/user');
+    const response = await fetch('http://localhost:3000/user');
     if (!response.ok) {
         throw new Error('Failed to fetch users');
     }
@@ -25,7 +25,7 @@ async function registerUser(user) {
 
     const newUser = { ...user, id: newId.toString() }; // שמירה של ה-ID כמחרוזת
 
-    const registerResponse = await fetch('http://localhost:3001/user', {
+    const registerResponse = await fetch('http://localhost:3000/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

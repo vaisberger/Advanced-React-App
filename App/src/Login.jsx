@@ -9,7 +9,7 @@ function Login() {
 
 async function authenticate(username, password) {
   console.log('Authenticating', username, password); // Debugging log
-  const response = await fetch('http://localhost:3001/user');
+  const response = await fetch('http://localhost:3000/user');
   if (!response.ok) {
     throw new Error('Failed to fetch');
   }
