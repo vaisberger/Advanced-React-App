@@ -14,14 +14,15 @@
   justify-content: space-between;
   font-size: 40px;
   position: absolute;
-  top: 5%;
-  left: 20%;
+  right: 0%;
+  background-color: #6a11cb;
 }
 
 .navLnk {
   list-style-type: none;
-  display: flex;
+  display:flex;
   margin: 0;
+  margin-left: 50px;
   padding: 0;
 }
 
@@ -74,7 +75,7 @@ body {
 
 .addpostform{
   background: #fff;
-  padding: 40px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 400px;
@@ -83,6 +84,19 @@ body {
   position: fixed;
   z-index: 10px;
   display: none;
+}
+.addcommentform{
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 80%;
+  text-align: center;
+  position: fixed;
+  z-index: 10px;
+  display: none;
+  font-size: 12px;
 }
 
 label {
@@ -129,8 +143,8 @@ input[type="submit"]:hover {
 }
 
 .btn {
-  background: #6a11cb;
-  color: #fff;
+  background: white;
+  color: #040404;
   font-size: 25px;
   padding: 5px 20px;
   margin-top: 25px;

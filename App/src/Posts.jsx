@@ -11,6 +11,8 @@ const Posts = () => {
   const [body, setBody] = useState('');
   const navigate = useNavigate();
   const [Postcount,setCount]=useState(101);
+
+
   const showPost = (id) => {
     document.getElementById("post").style.display = "block";
     document.getElementById("container").style.filter = "blur(3px)";
@@ -25,6 +27,8 @@ const Posts = () => {
     node.innerHTML = posts[id - 1].body;
     document.getElementById("largePost").appendChild(node);
   }
+
+
   const Update = async(id) => {
     await fetch(`http://localhost:3001/posts/${id}`, {
       method: 'PUT',
@@ -36,6 +40,8 @@ const Posts = () => {
 
     setTodos(posts.map(post => (post.id === id ? updatedPost : post)));
   }
+
+
   const Delete = async(id) => {
     await fetch(`http://localhost:3001/posts/${id}`, {
       method: 'DELETE'
@@ -43,17 +49,28 @@ const Posts = () => {
 
     setPosts(posts.filter(post => post.id !== id));
   }
+
+
   const Comments = (id) => {
     navigate(id+'/comments')
   }
+
+
   const addPost = () => {
     document.getElementById('addform').style.display = "block";
   }
+
+
   const AddComment = (id) => {
+    document.getElementById("addform"+id).style.display = "block";
   }
+
+
   const handleInputChange = (event) => {
    setPostIdTitle(event.target.value)
   }
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setCount(Postcount+1);
@@ -146,6 +163,28 @@ const Posts = () => {
       ) : (
         posts.map(post => (
           <div key={post.id} className={classes.post}>
+                            <form className={classes.addcommentform} id={"addform"+post.id} onSubmit={()=>handleAddcomment(post.id)}>
+                <span className={classes.exit} onClick={()=>exit()}></span>
+                  <h2>New Comment</h2>
+                  <label>
+                   Title:
+                  <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </label>
+                <label>
+                  Body:
+                  <input
+                    type="text"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                  />
+                </label>
+                {error && <p>{error}</p>}
+                <input type="submit" value="Submit" />
+                </form>
             <h1>{post.id + '.'}</h1>
             <h2>{post.title}</h2>
             <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
@@ -153,7 +192,7 @@ const Posts = () => {
             <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
             <button className={classes.btnPostC} onClick={() => Comments(post.id)}>Comments</button>
             <button className={classes.btnPostA} onClick={() => AddComment(post.id)}>AddComment</button>
-          </div>
+            </div>
         ))
 
       )}
