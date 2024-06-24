@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './App.css';
 import classes from './App.module.css';
 
 function Login() {
@@ -9,7 +8,7 @@ function Login() {
 
 async function authenticate(username, password) {
   console.log('Authenticating', username, password); // Debugging log
-  const response = await fetch('http://localhost:3000/user');
+  const response = await fetch('http://localhost:3001/user');
   if (!response.ok) {
     throw new Error('Failed to fetch');
   }

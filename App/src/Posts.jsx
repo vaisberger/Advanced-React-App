@@ -6,9 +6,11 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  const [selectedPost, setSelectedPost] = useState(null); // State for the selected post
-  const [postId, setPostId] = useState('');
+  const [postIdTitle, setPostIdTitle] = useState('');
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
   const navigate = useNavigate();
+  const [Postcount,setCount]=useState(101);
   const showPost = (id) => {
     document.getElementById("post").style.display = "block";
     document.getElementById("container").style.filter = "blur(3px)";
@@ -28,12 +30,41 @@ const Posts = () => {
   const Delete = (id) => {
   }
   const Comments = (id) => {
+    navigate(id+'/comments')
+  }
+  const addPost = () => {
+    document.getElementById('addform').style.display = "block";
+  }
+  const AddComment = (id) => {
   }
   const handleInputChange = (event) => {
-    setPostId(event.target.value);
+   setPostIdTitle(event.target.value)
   }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setCount(Postcount+1);
+    const newPost = { 
+      userId:user.id,
+      id:Postcount,
+      title: title,
+      body: body,
+    };
+
+    const response = await fetch('http://localhost:3001/posts', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(newPost),
+    });
+
+    const addedPost = await response.json();
+    setPosts([...posts, addedPost]);
+    setTitle('');
+    setBody('');
+  };
   const handleSearch = () => {
-    navigate(postId);
+    navigate(postIdTitle);
   }
   const exitPost = () => {
     document.getElementById('post').style.display = "none";
@@ -54,10 +85,34 @@ const Posts = () => {
   return (<>
     <Layout />
     <div className={classes.postMenu}>
-      <button className={classes.btnPost} onClick={() => showPost(post.id)}>Add Post</button>
+      <button className={classes.btnPostA} onClick={() => addPost()}>Add Post</button>
+
+      <form className={classes.addpostform} id="addform" onSubmit={handleSubmit}>
+      <span className={classes.exit} onClick={()=>exit()}></span>
+        <h2>New Post</h2>
+        <label>
+         Title:
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </label>
+      <label>
+        Body:
+        <input
+          type="text"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+      </label>
+      {error && <p>{error}</p>}
+      <input type="submit" value="Submit" />
+      </form>
+
       <input
         type="id"
-        value={postId}
+        value={postIdTitle}
         onChange={handleInputChange}
         placeholder="Enter post ID/Title"
         className={classes.inputid}
@@ -78,10 +133,11 @@ const Posts = () => {
           <div key={post.id} className={classes.post}>
             <h1>{post.id + '.'}</h1>
             <h2>{post.title}</h2>
-            <button className={classes.btnPost} onClick={() => showPost(post.id)}>Show</button>
-            <button className={classes.btnPost} onClick={() => Update(post.id)}>Update</button>
-            <button className={classes.btnPost} onClick={() => Delete(post.id)}>Delete</button>
-            <button className={classes.btnPost} onClick={() => Comments(post.id)}>Comments</button>
+            <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
+            <button className={classes.btnPostU} onClick={() => Update(post.id)}>Update</button>
+            <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
+            <button className={classes.btnPostC} onClick={() => Comments(post.id)}>Comments</button>
+            <button className={classes.btnPostA} onClick={() => AddComment(post.id)}>AddComment</button>
           </div>
         ))
 
@@ -102,4 +158,7 @@ const fetchUserPosts = async (userId) => {
   const posts = await response.json();
   return posts;
 };
+const exit=()=>{
+  document.getElementById('addform').style.display = "none";
+}
 

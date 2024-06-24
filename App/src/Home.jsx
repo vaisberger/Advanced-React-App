@@ -4,7 +4,7 @@ import Layout from './Layout'
 import Posts from './Posts';
 import Todos from './Todos';
 import Albums from './Albums';
-import './App.module.css';
+import classes from './App.module.css';
 const Home = () => {
   return (
    <Layout/>
