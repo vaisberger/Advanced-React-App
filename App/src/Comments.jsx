@@ -39,8 +39,12 @@ const Comments = () => {
     // Your update comment logic
   };
 
-  const Delete = (id) => {
-    // Your delete comment logic
+  const Delete = async (id) => {    
+    await fetch(`http://localhost:3001/comments/${id}`, {
+    method: 'DELETE'
+  });
+
+  setComments(comments.filter(comment => comment.id !== comment));
   };
 
   return (
