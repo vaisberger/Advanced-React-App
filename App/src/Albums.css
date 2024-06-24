@@ -1,113 +1,268 @@
+/* Albums.css */
 .albums-container {
-    display: flex;
-    flex-direction: column;
     max-width: 1200px;
     margin: 50px auto;
-    margin-top: 200px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.284);
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff99;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 200px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .albums-content {
     display: flex;
+    justify-content: space-between;
 }
 
 .album-controls {
-    flex: 1;
-    margin-right: 20px;
-    padding-right: 20px;
-    border-right: 1px solid #ccc;
+    width: 35%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.album-controls input,
-.album-controls button {
+.search-input,
+.album-input,
+.photo-input {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
-.new-album-container {
-    display: flex;
-    gap: 10px;
+.add-button {
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
 }
 
 .album-list {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin-top: 20px;
+    display: flex;
+    /* Set the list to use flexbox */
+    flex-direction: row;
+    /* Set the direction to row */
+    flex-wrap: wrap;
+    /* Allow wrapping if items exceed the container's width */
+    justify-content: space-between;
+    /* Distribute items with space between them */
 }
 
 .album-list li {
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
-    display: flex;
-    justify-content: space-between;
+    transition: transform 0.2s;
+    text-align: center;
+    flex: 1 1 calc(33.333% - 20px);
+    /* Flex items take up one-third of the container's width */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    margin: 10px;
+    /* Add margin around each item */
 }
 
 .album-list li:hover {
-    background-color: #e9e9e9;
+    transform: scale(1.02);
+    border: 1px solid #007bff;
+}
+
+.album-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.album-item h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.album-item .album-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.album-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    /* Allow wrapping if items exceed the container's width */
+}
+
+.album-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.album-list li {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.album-controls-buttuns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.album-list li:hover {
+    transform: scale(1.02);
+    border: 1px solid #007bff;
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
+}
+
+
+.update-button,
+.delete-button,
+.view-button {
+    margin: 5px 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.update-button {
+    background-color: #ffc107;
+    color: white;
+}
+
+.update-button:hover {
+    background-color: #e0a800;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.view-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.view-button:hover {
+    background-color: #218838;
 }
 
 .album-details {
-    flex: 2;
-    padding-left: 20px;
+    width: 60%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.album-details h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.new-photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .photo-list {
     list-style-type: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
 }
 
 .photo-list li {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .photo-thumbnail {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.photo-actions {
+    margin-left: auto;
 }
 
 .load-more-button {
-    display: block;
-    margin: 20px auto;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto 0;
 }
 
 .load-more-button:hover {
     background-color: #0056b3;
-}
-
-.search-input {
-    margin-bottom: 20px;
-}
-
-.h2 {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 20px;
 }
