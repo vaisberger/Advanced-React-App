@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Home';
 import Posts from './Posts';
+import PostsIndex from './PostIndex';
 import Todos from './Todos';
 import Albums from './Albums';
 import Login from './Login';
@@ -21,10 +22,10 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/posts/:id" element={<PostsIndex/>}/>
           <Route path="/albums" element={<Albums />} />
           <Route path="/todos" element={<Todos />} />
         </Route>
-        { }
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
