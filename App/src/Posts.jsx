@@ -25,9 +25,23 @@ const Posts = () => {
     node.innerHTML = posts[id - 1].body;
     document.getElementById("largePost").appendChild(node);
   }
-  const Update = (id) => {
+  const Update = async(id) => {
+    await fetch(`http://localhost:3001/posts/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify()
+    });
+
+    setTodos(posts.map(post => (post.id === id ? updatedPost : post)));
   }
-  const Delete = (id) => {
+  const Delete = async(id) => {
+    await fetch(`http://localhost:3001/posts/${id}`, {
+      method: 'DELETE'
+    });
+
+    setPosts(posts.filter(post => post.id !== id));
   }
   const Comments = (id) => {
     navigate(id+'/comments')
@@ -62,6 +76,7 @@ const Posts = () => {
     setPosts([...posts, addedPost]);
     setTitle('');
     setBody('');
+    exit();
   };
   const handleSearch = () => {
     navigate(postIdTitle);
