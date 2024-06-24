@@ -1,71 +1,86 @@
 /* App.css */
-.body {
+
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
-  width: 100%;
-  overflow-x: hidden;
 }
 
-.login-form {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"],
-.login-form input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.login-form input[type="submit"] {
+nav {
   background-color: #007bff;
+  padding: 10px;
   color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.login-form input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-.login-form p {
   text-align: center;
 }
 
-.login-form2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Two equal columns */
-  gap: 20px;
-  /* Space between columns */
-  max-width: 600px;
-  /* Max width of the form */
-  margin: auto;
-  /* Center the form horizontally */
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
 }
 
-.login-form2 div {
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.container {
   display: flex;
-  flex-direction: column;
-  /* Stack label and input vertically */
-  margin-bottom: 10px;
-  /* Space between each field */
+  justify-content: space-between;
+  padding: 20px;
 }
 
-input[type="submit"] {
-  grid-column: span 2;
-  /* Extend the submit button across both columns */
+.sidebar {
+  width: 20%;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.main-content {
+  width: 75%;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.album {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.album-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.photo {
+  width: calc(25% - 10px);
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
