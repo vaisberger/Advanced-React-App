@@ -4,7 +4,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #f0f0f031;
 }
 
 nav {
@@ -37,7 +37,7 @@ nav a {
 
 .sidebar {
   width: 20%;
-  background-color: #ffffff;
+  background-color: #ffffff7d;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -73,10 +73,10 @@ nav a {
 
 .photo {
   width: calc(25% - 10px);
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd86;
   padding: 5px;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #a075b9;
 }
 
 .photo img {

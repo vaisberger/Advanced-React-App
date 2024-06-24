@@ -66,7 +66,7 @@ const Albums = () => {
 
    return (
       <div className="albums-container">
-         <h2>User Albums</h2>
+         <h2>{user.username} אלבומים</h2>
          <div className="albums-content">
             <div className="album-controls">
                <input
