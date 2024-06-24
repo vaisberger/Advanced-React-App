@@ -58,6 +58,7 @@ const PostsIndex = () => {
         <div key={post.id} className={classes.postI}>
           <h1>{post.id + '.'}</h1>
           <h2>{post.title}</h2>
+          <p>{post.body}</p>
           <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
             <button className={classes.btnPostU} onClick={() => Update(post.id)}>Update</button>
             <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
