@@ -32,16 +32,9 @@ const Posts = () => {
     document.getElementById("largePost").appendChild(node);
   }
 
-  const Update = async (id) => {
-    await fetch(`http://localhost:3001/posts/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify()
-    });
-
-    setPosts(posts.map(post => (post.id === id ? updatedPost : post)));
+  const Update =(id) => {
+    document.getElementById("Updateform").style.display = "block";
+    setChosenPost(id);
   }
 
   const Delete = async (id) => {
@@ -130,6 +123,22 @@ const Posts = () => {
     document.getElementById("container").style.filter = "blur(0px)";
   }
 
+  const handleUpdatecomment= async(event)=>{
+    event.preventDefault();
+    await fetch(`http://localhost:3001/posts/${chosenPost.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        id: chosenPost.id,
+        title:chosenPost.title,
+        body: body,
+        userId:chosenPost.userId,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },})
+
+    setPosts(await fetchUserPosts(user.Id));
+  }
   useEffect(() => {
     const userId = user.id;
     const getPosts = async () => {
@@ -211,7 +220,20 @@ const Posts = () => {
           {error && <p>{error}</p>}
           <input type="submit" value="Submit" />
         </form>
-
+        <form className={classes.addcommentform} id="Updateform" onSubmit={handleUpdatecomment}>
+        <span className={classes.exit} onClick={() => exit("Updateform")}></span>
+        <h2>Update Post</h2>
+            <label>
+            Body:
+            <input
+              type="text"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
+          </label>
+          {error && <p>{error}</p>}
+          <input type="submit" value="Submit" />
+        </form>
         {error ? (
           <p>Error: {error}</p>
         ) : (
@@ -220,7 +242,7 @@ const Posts = () => {
               <h1>{post.id + '.'}</h1>
               <h2>{post.title}</h2>
               <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
-              <button className={classes.btnPostU} onClick={() => Update(post.id)}>Update</button>
+              <button className={classes.btnPostU} onClick={() => Update(post)}>Update</button>
               <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
               <button className={classes.btnPostC} onClick={() => Comments(post.id)}>Comments</button>
               <button className={classes.btnPostA} onClick={() => AddComment(post.id)}>AddComment</button>
