@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
-
+import './Register.css';
 function Register() {
     return <RegisterForm />;
 }
 
 async function checkUsernameAvailability(username) {
-    const response = await fetch('http://localhost:3000/user');
+    const response = await fetch('http://localhost:3001/user');
     if (!response.ok) {
         throw new Error('Failed to check username availability');
     }
@@ -16,7 +15,7 @@ async function checkUsernameAvailability(username) {
 }
 
 async function registerUser(user) {
-    const response = await fetch('http://localhost:3000/user');
+    const response = await fetch('http://localhost:3001/user');
     if (!response.ok) {
         throw new Error('Failed to fetch users');
     }
@@ -25,7 +24,7 @@ async function registerUser(user) {
 
     const newUser = { ...user, id: newId.toString() }; // שמירה של ה-ID כמחרוזת
 
-    const registerResponse = await fetch('http://localhost:3000/user', {
+    const registerResponse = await fetch('http://localhost:3001/user', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -95,32 +94,34 @@ function RegisterForm() {
 
     return (
         <form onSubmit={handleSubmit} className="login-form">
-            <label>
-                Username:
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </label>
-            <label>
-                Verify Password:
-                <input
-                    type="password"
-                    value={passwordVerify}
-                    onChange={(e) => setPasswordVerify(e.target.value)}
-                />
-            </label>
-            {error && <p>{error}</p>}
-            <input type="submit" value="Register" />
+            <div>
+                <label>
+                    Username:
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Password:
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Verify Password:
+                    <input
+                        type="password"
+                        value={passwordVerify}
+                        onChange={(e) => setPasswordVerify(e.target.value)}
+                    />
+                </label>
+                {error && <p>{error}</p>}
+                <input type="submit" value="Register" />
+            </div>
         </form>
     );
 }

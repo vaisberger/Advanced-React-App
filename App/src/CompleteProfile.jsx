@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
+import './CompleteProfile.css';
 
 function CompleteProfile() {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -44,7 +44,6 @@ function CompleteProfile() {
         };
 
         try {
-            // מציאת המשתמש לפי ID
             const fetchResponse = await fetch(`http://localhost:3001/user?id=${user.id}`);
             if (!fetchResponse.ok) {
                 throw new Error('Failed to fetch user');

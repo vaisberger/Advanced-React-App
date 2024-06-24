@@ -59,7 +59,7 @@ function Form() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
       <input type="submit" value="Submit" />
       <p>Don't have an account? <Link to="/register">Click here to register</Link></p>
     </form>
