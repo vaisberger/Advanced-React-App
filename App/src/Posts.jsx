@@ -6,8 +6,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  const [selectedPost, setSelectedPost] = useState(null); // State for the selected post
-  const [postId, setPostId] = useState('');
+  const [postIdTitle, setPostIdTitle] = useState('');
   const navigate = useNavigate();
   const showPost = (id) => {
     document.getElementById("post").style.display = "block";
@@ -30,10 +29,10 @@ const Posts = () => {
   const Comments = (id) => {
   }
   const handleInputChange = (event) => {
-    setPostId(event.target.value);
+   setPostIdTitle(event.target.value)
   }
   const handleSearch = () => {
-    navigate(postId);
+    navigate(postIdTitle);
   }
   const exitPost = () => {
     document.getElementById('post').style.display = "none";
@@ -57,7 +56,7 @@ const Posts = () => {
       <button className={classes.btnPost} onClick={() => showPost(post.id)}>Add Post</button>
       <input
         type="id"
-        value={postId}
+        value={postIdTitle}
         onChange={handleInputChange}
         placeholder="Enter post ID/Title"
         className={classes.inputid}
@@ -95,7 +94,7 @@ export default Posts;
 
 
 const fetchUserPosts = async (userId) => {
-  const response = await fetch(`http://localhost:3000/posts?userId=${userId}`);
+  const response = await fetch(`http://localhost:3001/posts?userId=${userId}`);
   if (!response.ok) {
     throw new Error('Failed to fetch user posts');
   }

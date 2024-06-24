@@ -4,6 +4,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .login-form {
