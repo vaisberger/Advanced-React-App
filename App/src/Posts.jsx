@@ -27,6 +27,9 @@ const Posts = () => {
   const Delete = (id) => {
   }
   const Comments = (id) => {
+    navigate(id+'/comments')
+  }
+  const AddComment = (id) => {
   }
   const handleInputChange = (event) => {
    setPostIdTitle(event.target.value)
@@ -53,7 +56,7 @@ const Posts = () => {
   return (<>
     <Layout />
     <div className={classes.postMenu}>
-      <button className={classes.btnPost} onClick={() => showPost(post.id)}>Add Post</button>
+      <button className={classes.btnPostA} onClick={() => showPost(post.id)}>Add Post</button>
       <input
         type="id"
         value={postIdTitle}
@@ -77,10 +80,11 @@ const Posts = () => {
           <div key={post.id} className={classes.post}>
             <h1>{post.id + '.'}</h1>
             <h2>{post.title}</h2>
-            <button className={classes.btnPost} onClick={() => showPost(post.id)}>Show</button>
-            <button className={classes.btnPost} onClick={() => Update(post.id)}>Update</button>
-            <button className={classes.btnPost} onClick={() => Delete(post.id)}>Delete</button>
-            <button className={classes.btnPost} onClick={() => Comments(post.id)}>Comments</button>
+            <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
+            <button className={classes.btnPostU} onClick={() => Update(post.id)}>Update</button>
+            <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
+            <button className={classes.btnPostC} onClick={() => Comments(post.id)}>Comments</button>
+            <button className={classes.btnPostA} onClick={() => AddComment(post.id)}>AddComment</button>
           </div>
         ))
 

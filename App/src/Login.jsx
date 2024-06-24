@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './App.css';
 import classes from './App.module.css';
 
 function Login() {

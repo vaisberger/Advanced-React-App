@@ -10,6 +10,7 @@ import CompleteProfile from './CompleteProfile';
 import Layout from './Layout';
 import './App.css';
 import Register from './register';
+import Comments from './Comments';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/posts/:id/comments" element={<Comments/>}/>
           <Route path="/posts/:id" element={<PostsIndex/>}/>
           <Route path="/posts?" element={<PostsIndex/>}/>
           <Route path="/albums" element={<Albums />} />
