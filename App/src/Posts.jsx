@@ -194,7 +194,7 @@ const Posts = () => {
       </div>
 
       <div className={classes.userPost} id="post">
-        <span className={classes.exit} onClick={exitPost}></span>
+        <span className={classes.exit} onClick={() => exitPost()}></span>
         <h1>Post</h1>
         <div className={classes.infoDisplay} id="largePost"></div>
       </div>
@@ -269,5 +269,8 @@ const fetchUserPosts = async (userId) => {
 };
 const exit = (id) => {
   document.getElementById(id).style.display = "none";
+}
+const exitPost = () => {
+  document.getElementById(id).style.filter = "blur(0px)";
 }
 
