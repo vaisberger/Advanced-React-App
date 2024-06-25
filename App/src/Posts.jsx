@@ -80,7 +80,6 @@ const Posts = () => {
     } else {
       setCommentTitle('');
       setCommentBody('');
-      setChosenPost('');
       exit("addformC");
     }
   }
@@ -137,9 +136,9 @@ const Posts = () => {
         'Content-type': 'application/json; charset=UTF-8',
       },})
 
-    setPosts(await fetchUserPosts(user.Id));
     exit("Updateform");
     setBody('');
+    setChosenPost('');
   }
   useEffect(() => {
     const userId = user.id;
