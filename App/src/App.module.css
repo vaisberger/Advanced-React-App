@@ -74,6 +74,8 @@ body {
   width: 100%;
   text-align: center;
   margin: auto;
+  margin-top: 150px;
+
 }
 
 .addpostform {
@@ -361,7 +363,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(135deg, #8d6daf56 0%, #3c76dbcb 100%);
   color: white;
   text-align: center;
   padding: 20px;
