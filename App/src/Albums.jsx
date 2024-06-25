@@ -51,7 +51,10 @@ const Albums = () => {
    };
 
    const handleAddAlbum = async () => {
+      const newId = albums.length > 0 ? Math.max(...albums.map(album => parseInt(album.id))) + 1 : 1;
+
       const newAlbum = {
+         id: newId.toString(),
          title: newAlbumTitle,
          userId: user.id,
       };
@@ -171,9 +174,9 @@ const Albums = () => {
                </div>
                <ul className="album-list">
                   {
-                     filteredAlbums.map((album) => (
+                     filteredAlbums.map((album, index) => (
                         <li key={album.id}>
-                           <span onClick={() => handleSelectAlbum(album)}>{album.id}. {album.title}</span>
+                           <span onClick={() => handleSelectAlbum(album)}>{index + 1}. {album.title}</span>
                            <div className='album-controls-buttuns'>
                               <button
                                  onClick={() => handleUpdateAlbum(album.id, prompt('Update Album Title', album.title))}
