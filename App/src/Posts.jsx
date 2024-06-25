@@ -135,7 +135,9 @@ const Posts = () => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },})
-
+    setPosts(posts.map(post => 
+      post.id === chosenPost.id ? { ...post, body: body } : post
+    ));
     exit("Updateform");
     setBody('');
     setChosenPost('');
