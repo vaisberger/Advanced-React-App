@@ -44,21 +44,6 @@ const PostsIndex = () => {
     fetchPost();
   }, [params.id, navigate]);
 
-  const showPost = (id) => {
-    document.getElementById("post").style.display = "block";
-    document.getElementById("container").style.filter = "blur(3px)";
-    document.getElementById("largePost").innerHTML = "";
-    var node = document.createElement('h2');
-    node.innerHTML = id;
-    document.getElementById("largePost").appendChild(node);
-    node = document.createElement('h2');
-    node.innerHTML = posts[id - 1].title;
-    document.getElementById("largePost").appendChild(node);
-    node = document.createElement('p');
-    node.innerHTML = posts[id - 1].body;
-    document.getElementById("largePost").appendChild(node);
-  };
-
   const Update = (id) => {
     document.getElementById("Updateform").style.display = "block";
     setChosenPost(id);
@@ -126,11 +111,6 @@ const PostsIndex = () => {
   return (
     <>
      <Layout />
-     <div className={classes.userPost} id="post">
-        <span className={classes.exit} onClick={() => exit("post")}></span>
-        <h1>Post</h1>
-        <div className={classes.infoDisplay} id="largePost"></div>
-      </div>
      <form className={classes.addcommentform} id="addformC" onSubmit={handleAddcomment}>
           <span className={classes.exit} onClick={() => exit("addformC")}></span>
           <h2>New Comment</h2>
@@ -172,7 +152,6 @@ const PostsIndex = () => {
           <h1>{post.id + '.'}</h1>
           <h2>{post.title}</h2>
           <p>{post.body}</p>
-          <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
             <button className={classes.btnPostU} onClick={() => Update(post.id)}>Update</button>
             <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
             <button className={classes.btnPostC} onClick={() => Comments(post.id)}>Comments</button>

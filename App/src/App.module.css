@@ -152,8 +152,11 @@ input[type="submit"]:hover {
   color: #040404;
   font-size: 25px;
   padding: 5px 20px;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-right: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
 }
 
 .logout {
@@ -286,6 +289,9 @@ input[type="submit"]:hover {
   margin-right: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   font-weight: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
 }
 
 .btnPostD {
@@ -297,6 +303,9 @@ input[type="submit"]:hover {
   margin-right: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   font-weight: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
 }
 
 .btnPostS {
@@ -308,6 +317,9 @@ input[type="submit"]:hover {
   margin-right: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   font-weight: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
 }
 
 .btnPostC {
@@ -319,6 +331,9 @@ input[type="submit"]:hover {
   margin-right: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   font-weight: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
 }
 
 .btnPostU {
@@ -330,4 +345,11 @@ input[type="submit"]:hover {
   margin-right: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   font-weight: 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
+  cursor: pointer;
+}
+button:hover {
+  border-color: #646cff;
 }
