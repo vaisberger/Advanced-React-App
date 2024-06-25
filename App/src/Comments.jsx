@@ -8,7 +8,7 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const params = useParams();
   const [error, setError] = useState(null);
-
+  const [chosenPost, setChosenPost] = useState('');
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -36,7 +36,8 @@ const Comments = () => {
   }, [params.id, navigate]);
 
   const Update = (id) => {
-    // Your update comment logic
+    document.getElementById("Updateform").style.display = "block";
+    setChosenComment(id);
   };
 
   const Delete = async (id) => {    
