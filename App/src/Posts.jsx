@@ -138,6 +138,8 @@ const Posts = () => {
       },})
 
     setPosts(await fetchUserPosts(user.Id));
+    exit("Updateform");
+    setBody('');
   }
   useEffect(() => {
     const userId = user.id;

@@ -8,7 +8,8 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const params = useParams();
   const [error, setError] = useState(null);
-  const [chosenPost, setChosenPost] = useState('');
+  const [chosenComment, setChosenComment] = useState('');
+  const [body, setBody] = useState('');
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -35,10 +36,35 @@ const Comments = () => {
     fetchComments();
   }, [params.id, navigate]);
 
-  const Update = (id) => {
+  const Update = (comment) => {
     document.getElementById("Updateform").style.display = "block";
-    setChosenComment(id);
+    setChosenComment(comment);
   };
+
+  const handleUpdatecomment= async(event)=>{
+    event.preventDefault();
+    await fetch(`http://localhost:3001/comments/${chosenComment.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        id: chosenComment.id,
+        name: chosenComment.name,
+        email: chosenComment.email,
+        body: body,
+        postId:chosenComment.postId,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },})
+    const response = await fetch(`http://localhost:3001/comments?postId=${params.id}`);
+    const res = await response.json();
+    if (Array.isArray(res)) {
+      setComments(res); // Set the array of comments directly
+    } else {
+      setComments([res]); // Handle case where res is a single object
+    }
+    exit();
+    setBody('');
+  }
 
   const Delete = async (id) => {    
     await fetch(`http://localhost:3001/comments/${id}`, {
@@ -52,6 +78,20 @@ const Comments = () => {
     <>
       <Layout />
       <div className={classes.containerC} id="container">
+      <form className={classes.addcommentform} id="Updateform" onSubmit={handleUpdatecomment}>
+        <span className={classes.exit} onClick={() => exit()}></span>
+        <h2>Update Comment</h2>
+            <label>
+            Body:
+            <input
+              type="text"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
+          </label>
+          {error && <p>{error}</p>}
+          <input type="submit" value="Submit" />
+        </form>
         {error ? (
           <p>Error: {error}</p>
         ) : (
@@ -61,7 +101,7 @@ const Comments = () => {
               <h2>{comment.name}</h2>
               <h3>{comment.email}</h3>
               <p>{comment.body}</p>
-              <button className={classes.btnPostU} onClick={() => Update(comment.id)}>Update</button>
+              <button className={classes.btnPostU} onClick={() => Update(comment)}>Update</button>
               <button className={classes.btnPostD} onClick={() => Delete(comment.id)}>Delete</button>
             </div>
           ))
@@ -70,5 +110,7 @@ const Comments = () => {
     </>
   );
 };
-
+const exit = () => {
+  document.getElementById("Updateform").style.display = "none";
+}
 export default Comments;
