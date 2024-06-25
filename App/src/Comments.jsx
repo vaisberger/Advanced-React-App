@@ -64,6 +64,7 @@ const Comments = () => {
     }
     exit();
     setBody('');
+    setChosenComment('');
   }
 
   const Delete = async (id) => {    
