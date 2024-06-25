@@ -6,6 +6,7 @@ function Todos() {
   const [newTodoTitle, setNewTodoTitle] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
+  const [searchCriterion, setSearchCriterion] = useState('title'); // New state for search criterion
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
@@ -61,7 +62,16 @@ function Todos() {
   };
 
   const filteredTodos = todos
-    .filter(todo => todo.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter(todo => {
+      if (searchCriterion === 'id') {
+        return todo.id.toString().includes(searchTerm);
+      } else if (searchCriterion === 'title') {
+        return todo.title.toLowerCase().includes(searchTerm.toLowerCase());
+      } else if (searchCriterion === 'completed') {
+        return todo.completed === (searchTerm.toLowerCase() === 'completed');
+      }
+      return true;
+    })
     .sort((a, b) => {
       if (filter === 'alphabetical') return a.title.localeCompare(b.title);
       if (filter === 'completed') return a.completed - b.completed;
@@ -90,6 +100,11 @@ function Todos() {
         placeholder="Search todos"
         className="todo-input"
       />
+      <select onChange={(e) => setSearchCriterion(e.target.value)} value={searchCriterion} className="todo-select">
+        <option value="title">Title</option>
+        <option value="id">ID</option>
+        <option value="completed">Completed</option>
+      </select>
       <select onChange={(e) => setFilter(e.target.value)} value={filter} className="todo-select">
         <option value="all">All</option>
         <option value="completed">Completed</option>
@@ -107,6 +122,9 @@ function Todos() {
               className="todo-checkbox"
             />
             <button onClick={() => deleteTodo(todo.id)} className="todo-delete">Delete</button>
+            <button
+              onClick={() => updateTodo({ ...todo, title: prompt('Update Title', todo.title) || todo.title })}
+              className="todo-update">Update</button>
           </li>
         ))}
       </ul>
