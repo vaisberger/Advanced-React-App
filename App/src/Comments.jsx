@@ -10,11 +10,12 @@ const Comments = () => {
   const [error, setError] = useState(null);
   const [chosenComment, setChosenComment] = useState('');
   const [body, setBody] = useState('');
+  
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const response = await fetch(`http://localhost:3001/comments?postId=${params.id}`);
-        console.log('Fetching comments with URL:', `http://localhost:3001/posts/comments?postId=${params.id}`);
+        console.log('Fetching comments with URL:', `http://localhost:3001/comments?postId=${params.id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -41,7 +42,7 @@ const Comments = () => {
     setChosenComment(comment);
   };
 
-  const handleUpdatecomment= async(event)=>{
+  const handleUpdateComment = async(event) => {
     event.preventDefault();
     await fetch(`http://localhost:3001/comments/${chosenComment.id}`, {
       method: 'PUT',
@@ -50,11 +51,13 @@ const Comments = () => {
         name: chosenComment.name,
         email: chosenComment.email,
         body: body,
-        postId:chosenComment.postId,
+        postId: chosenComment.postId,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
-      },})
+      },
+    });
+
     const response = await fetch(`http://localhost:3001/comments?postId=${params.id}`);
     const res = await response.json();
     if (Array.isArray(res)) {
@@ -62,6 +65,7 @@ const Comments = () => {
     } else {
       setComments([res]); // Handle case where res is a single object
     }
+
     exit();
     setBody('');
     setChosenComment('');
@@ -69,20 +73,20 @@ const Comments = () => {
 
   const Delete = async (id) => {    
     await fetch(`http://localhost:3001/comments/${id}`, {
-    method: 'DELETE'
-  });
+      method: 'DELETE'
+    });
 
-  setComments(comments.filter(comment => comment.id !== comment));
+    setComments(comments.filter(comment => comment.id !== id));
   };
 
   return (
     <>
       <Layout />
       <div className={classes.containerC} id="container">
-      <form className={classes.addcommentform} id="Updateform" onSubmit={handleUpdatecomment}>
-        <span className={classes.exit} onClick={() => exit()}></span>
-        <h2>Update Comment</h2>
-            <label>
+        <form className={classes.addcommentform} id="Updateform" onSubmit={handleUpdateComment}>
+          <span className={classes.exit} onClick={() => exit()}></span>
+          <h2>Update Comment</h2>
+          <label>
             Body:
             <input
               type="text"
@@ -111,7 +115,9 @@ const Comments = () => {
     </>
   );
 };
+
 const exit = () => {
   document.getElementById("Updateform").style.display = "none";
 }
+
 export default Comments;
