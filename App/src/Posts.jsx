@@ -17,18 +17,18 @@ const Posts = () => {
   const [Postcount, setCount] = useState(101);
   const [Commentcount, setCommentCount] = useState(501);
 
-  const showPost = (id) => {
+  const showPost = (post) => {
     document.getElementById("post").style.display = "block";
     document.getElementById("container").style.filter = "blur(3px)";
     document.getElementById("largePost").innerHTML = "";
     var node = document.createElement('h2');
-    node.innerHTML = id;
+    node.innerHTML = post.id;
     document.getElementById("largePost").appendChild(node);
     node = document.createElement('h2');
-    node.innerHTML = posts[id - 1].title;
+    node.innerHTML = post.title;
     document.getElementById("largePost").appendChild(node);
     node = document.createElement('p');
-    node.innerHTML = posts[id - 1].body;
+    node.innerHTML = post.body;
     document.getElementById("largePost").appendChild(node);
   }
 
@@ -244,7 +244,7 @@ const Posts = () => {
             <div key={post.id} className={classes.post}>
               <h1>{post.id + '.'}</h1>
               <h2>{post.title}</h2>
-              <button className={classes.btnPostS} onClick={() => showPost(post.id)}>Show</button>
+              <button className={classes.btnPostS} onClick={() => showPost(post)}>Show</button>
               <button className={classes.btnPostU} onClick={() => Update(post)}>Update</button>
               <button className={classes.btnPostD} onClick={() => Delete(post.id)}>Delete</button>
               <button className={classes.btnPostC} onClick={() => Comments(post.id)}>Comments</button>
