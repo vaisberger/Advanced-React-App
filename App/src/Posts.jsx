@@ -63,7 +63,6 @@ const Posts = () => {
     setCommentCount(Commentcount + 1);
     const newComment = {
       postId: chosenPost,
-      id: Commentcount,
       email: user.email,
       name: commentTitle,
       body: commentBody
@@ -93,7 +92,6 @@ const Posts = () => {
     setCount(Postcount + 1);
     const newPost = {
       userId: user.id,
-      id: Postcount,
       title: title,
       body: body,
     };
