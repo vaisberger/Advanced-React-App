@@ -122,7 +122,7 @@ const Posts = () => {
     document.getElementById("container").style.filter = "blur(0px)";
   }
 
-  const handleUpdatecomment= async(event)=>{
+  const handleUpdatePost= async(event)=>{
     event.preventDefault();
     await fetch(`http://localhost:3001/posts/${chosenPost.id}`, {
       method: 'PUT',
@@ -223,7 +223,7 @@ const Posts = () => {
           {error && <p>{error}</p>}
           <input type="submit" value="Submit" />
         </form>
-        <form className={classes.addcommentform} id="Updateform" onSubmit={handleUpdatecomment}>
+        <form className={classes.addcommentform} id="Updateform" onSubmit={handleUpdatePost}>
         <span className={classes.exit} onClick={() => exit("Updateform")}></span>
         <h2>Update Post</h2>
             <label>
